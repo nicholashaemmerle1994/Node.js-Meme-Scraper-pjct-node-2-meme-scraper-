@@ -1,5 +1,6 @@
+import fs from 'node:fs';
 import * as cheerio from 'cheerio';
-import fs from 'fs';
+import client from 'https';
 import request from 'request';
 
 //  Origin link for from the meme page we get the data from
@@ -38,5 +39,18 @@ request(origin, (error, response, body) => {
     } catch (err) {
       console.error(err);
     }
+
+    //  Here should start the loop that downloads the imgs and puts it in a new file inside the meme folder
   }
 });
+// let url =
+//   "https://api.memegen.link/images/rollsafe/can't_get_fired/if_you_don't_have_a_job.jpg?width=300";
+// let filepath =
+//   '/Users/nicholashammerle/projects/node.js-meme-scraper-pjct-node-2-meme-scraper-/memes/01.jpeg';
+
+// function downloadImage(url, filepath) {
+//   client.get(url, (res) => {
+//     res.pipe(fs.createWriteStream(filepath));
+//   });
+// }
+// downloadImage(url, filepath);
