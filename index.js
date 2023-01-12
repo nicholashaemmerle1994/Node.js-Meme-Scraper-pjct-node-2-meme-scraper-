@@ -16,7 +16,6 @@ fs.rmdir(dir, () => {}); // this deletes the memes folder from the last time the
 request(origin, (error, response, body) => {
   if (!error && response.statusCode === 200) {
     const htmlContent = cheerio.load(body);
-
     //  loops through every div > a > picks the src and places it in the linkArray
     htmlContent('div a img').each((i, element) => {
       if (i <= 9) {
@@ -34,7 +33,7 @@ request(origin, (error, response, body) => {
     //  Here should start the loop that downloads the imgs and puts it in a new file inside the meme folder
     for (let i = 0; i < linkArray.length; i++) {
       client.get(linkArray[i], (res) => {
-        let dir2 = `./memes/0${i + 1}.jpg`;
+        const dir2 = `./memes/0${i + 1}.jpg`;
         res.pipe(fs.createWriteStream(dir2));
       });
     }
