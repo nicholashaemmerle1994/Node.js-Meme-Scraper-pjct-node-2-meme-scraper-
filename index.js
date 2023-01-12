@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 import * as cheerio from 'cheerio';
-import client from 'https';
+import client from 'node:https';
 import request from 'request';
 
 //  Origin link for from the meme page we get the data from
