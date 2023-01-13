@@ -36,12 +36,17 @@ request(origin, (error, response, body) => {
     } catch (err) {
       console.error(err);
     }
-    //  Here should start the loop that downloads the imgs and puts it in a new file inside the meme folder
+    //  Thats the loop that downloads, stores and names the pictures
     for (let i = 0; i < linkArray.length; i++) {
       bar1.update(170);
       client.get(linkArray[i], (res) => {
-        const dir2 = `./memes/0${i + 1}.jpg`;
-        res.pipe(fs.createWriteStream(dir2));
+        if (i < 9) {
+          const dir2 = `./memes/0${i + 1}.jpg`;
+          res.pipe(fs.createWriteStream(dir2));
+        } else {
+          const dir2 = `./memes/10.jpg`;
+          res.pipe(fs.createWriteStream(dir2));
+        }
       });
     }
   }
